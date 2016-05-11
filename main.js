@@ -2,7 +2,7 @@
 var sliderImgs = ["images/cat1.jpg", "images/cat2.jpg", "images/cat3.jpg"];
 var stopSlider = false;
 var slideCounter = 0
-var lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut fringilla aliquam augue, non porttitor turpis maximus non. Cras sem risus, accumsan quis varius quis, eleifend quis orci. Aliquam rutrum lacus eros, vitae iaculis felis pellentesque et.";
+var lorem = "My name is SJ and this is a personal card I made using D3.js and SVG. This personal card has engaging transitions and a custom image slider I made. It can be used to provide any information about you. Click on the icons to demo the project!";
 var defaultData = {
   "color": "gray-light",
   "hex": "#f5f5f5",
@@ -13,7 +13,7 @@ var defaultData = {
   },
   "h1": "HELLO",
   "h2": "WORLD",
-  "p": lorem + " " + lorem,
+  "p": lorem,
   "texthex": "#4c4c4c"
 };
 
@@ -29,7 +29,7 @@ var dataset = [
     "icons": ["images/id-sword.png", "images/ic-sword.png", "images/inc-sword.png"],
     "h1": "MY",
     "h2": "JOB",
-    "p": "Aliquam erat volutpat. Suspendisse porta fermentum diam in dictum. Nunc consectetur justo at ipsum sagittis, vitae rutrum eros dignissim.",
+    "p": "I'm a wandering Samurai. I travel across the lands to defeat any formidable foes. Those who crossed my sword never lived to tell the tale!",
     "texthex": "#ffffff"
   },
   {
@@ -43,7 +43,7 @@ var dataset = [
     "icons": ["images/id-plane.png", "images/ic-plane.png", "images/inc-plane.png"],
     "h1": "MY",
     "h2": "PLANE",
-    "p": "Mauris quis magna in dolor vehicula venenatis. Fusce hendrerit lacus neque, in consectetur nisi interdum at. Etiam molestie turpis vel nunc venenatis porta.",
+    "p": "I like to ride on my plane on my side time. The view of the sunset on a nice day is priceless!",
     "texthex": "#ffffff"
   },
   {
@@ -57,7 +57,7 @@ var dataset = [
     "icons": ["images/id-friend.png", "images/ic-friend.png", "images/inc-friend.png"],
     "h1": "MY",
     "h2": "FRIEND",
-    "p": "Suspendisse imperdiet sagittis congue. Praesent rhoncus at risus ac imperdiet. Ut in nulla non lorem tempor luctus nec non est.",
+    "p": "This is my bird friend Woodstock. We like to relax on top of my house and go on adventures",
     "texthex": "#ffffff"
   },
   {
@@ -71,37 +71,37 @@ var dataset = [
     "icons": ["images/id-slider.png", "images/ic-slider.png", "images/inc-slider.png"],
     "h1": "MY",
     "h2": "CUSTOM SLIDER",
-    "p": "In vitae dignissim justo. Nullam elementum ligula at hendrerit ullamcorper. Integer blandit porttitor sollicitudin. Sed velit lectus, tincidunt at nibh sed, accumsan luctus massa.",
+    "p": "This is my customer image slider. Are you an artist? Photographer? You can display your wonderful gallery using this slider. Check out these cats for now!",
+    "texthex": "#ffffff"
+  },
+  {
+    "color": "orange-golden",
+    "hex": "#E0A025",
+    "image": {
+      "url": "images/userauth1.gif",
+      "width": "200",
+      "height": "300",
+    },
+    "icons": ["images/id-video.png", "images/ic-video.png", "images/inc-video.png"],
+    "h1": "MY",
+    "h2": "User Auth 1",
+    "p": "Check out my user authentication using D3.js and SVG.",
     "texthex": "#ffffff"
   },
   {
     "color": "yellow-lemon",
     "hex": "#F4D00C",
     "image": {
-      "url": "images/uhhuh.gif",
+      "url": "images/userauth2.gif",
       "width": "200",
       "height": "200",
     },
     "icons": ["images/id-gif.png", "images/ic-gif.png", "images/inc-gif.png"],
     "h1": "MY",
-    "h2": ".GIF FILE",
-    "p": "Sed tristique felis eu dui imperdiet faucibus. Mauris egestas nisl ac finibus laoreet. Integer nec aliquet arcu. Duis ullamcorper sit amet nunc ac facilisis.",
+    "h2": "User Auth 2",
+    "p": "Check out my another user authentication using D3.js and SVG.",
     "texthex": "#ffffff"
-  },
-  {
-    "color": "orange-golden",
-     "hex": "#E0A025",
-     "image": {
-       "url": "images/snoopyvid.gif",
-       "width": "200",
-       "height": "200",
-     },
-     "icons": ["images/id-video.png", "images/ic-video.png", "images/inc-video.png"],
-     "h1": "MY",
-     "h2": "VIDEO",
-     "p": "Maecenas vehicula, tortor vehicula feugiat feugiat, velit enim molestie lectus, et sollicitudin eros eros condimentum arcu.",
-     "texthex": "#ffffff"
-   }
+  }
 ];
 
 // dimensions
@@ -180,10 +180,6 @@ var defineIconPatterns = function(data) {
       .attr("fill", "url(#" + color + "-iconpattern)");
   }
 };
-
-// var highlightCircle = function(color) {
-//   svg.select("#" + color + "-over").attr("fill", "black");
-// };
 
 var createUnderCircle = function(cx, cy, r, color, hexcode) {
   var uCircle = svg.insert("circle", ".over")
@@ -278,6 +274,7 @@ var swapnSlideImg = function(data) {
     svg.select(".image")
       .attr("x", 725)
       .attr("y", (h - imgdata.height) / 2);
+
     var image = svg.select(".image").attr("xlink:href", imgdata.url);
   }
 
@@ -398,7 +395,7 @@ var fillText = function(data) {
       .attr("id", "p")
       .text(data.p)
       .style("font-family", "Montserrat")
-      .style("font-size", "12px")
+      .style("font-size", "14px")
       .style("color", data.texthex)
       .style("text-align", "justify");
 };
@@ -409,7 +406,20 @@ var swapText = function(data) {
 
   var h1 = svg.select("#heading1").text(data.h1);
   var h2 = svg.select("#heading2").text(data.h2);
-  var p = svg.select("#p").text(data.p);
+
+  if (data.color === "orange-golden") {
+    var p = svg.select("#p").text(data.p + " Click this link to demo this ");
+    p.append("a")
+      .attr("href", "userauth1/userauth1.html")
+      .text("project");
+  } else if (data.color === "yellow-lemon") {
+    var p = svg.select("#p").text(data.p + " Click this link to demo this ");
+    p.append("a")
+      .attr("href", "userauth2/userauth2.html")
+      .text("project");
+  } else {
+    var p = svg.select("#p").text(data.p);
+  }
 
   if (h1.attr("navigated") === "false") {
     h1.attr("fill-opacity", 0)
